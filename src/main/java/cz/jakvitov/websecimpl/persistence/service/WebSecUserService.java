@@ -9,4 +9,5 @@ public interface WebSecUserService {
     WebSecUser saveWebSecUser(WebSecUser webSecUser);
 
     void deleteUserByName(String webSecUser);
+
 }

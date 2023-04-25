@@ -72,4 +72,13 @@ public class WebSecUser{
         this.userRoles = userRoles;
     }
 
+    @Override
+    public String toString() {
+        return "WebSecUser{" +
+                "webSecUserId=" + webSecUserId +
+                ", webSecUserName='" + webSecUserName + '\'' +
+                ", webSecUserPassword='" + webSecUserPassword + '\'' +
+                ", userRoles=" + userRoles +
+                '}';
+    }
 }

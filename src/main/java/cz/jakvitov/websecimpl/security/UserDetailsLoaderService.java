@@ -1,5 +1,6 @@
 package cz.jakvitov.websecimpl.security;
 
+import cz.jakvitov.websecimpl.persistence.exceptions.UserNotFoundExeption;
 import cz.jakvitov.websecimpl.persistence.service.WebSecUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,6 +19,11 @@ public class UserDetailsLoaderService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return new WebSecUserDetails(webSecUserService.getUserByName(username));
+        try {
+            return new WebSecUserDetails(webSecUserService.getUserByName(username));
+        }
+        catch (UserNotFoundExeption userNotFoundExeption){
+            throw new UsernameNotFoundException(userNotFoundExeption.getMessage());
+        }
     }
 }
