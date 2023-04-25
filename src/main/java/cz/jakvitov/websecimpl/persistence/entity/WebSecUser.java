@@ -1,5 +1,6 @@
 package cz.jakvitov.websecimpl.persistence.entity;
 
+import cz.jakvitov.websecimpl.security.UserRole;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -27,17 +28,11 @@ public class WebSecUser{
     @Column(name = "web_sec_user_password")
     private String webSecUserPassword;
 
-    @OneToMany(mappedBy = "webSecUser")
-    private List<WebSecUserRole> userRoles;
+    @Column(name = "web_sec_user_role", nullable = false)
+    @Enumerated(value = EnumType.STRING)
+    private UserRole webSecUserRole;
 
     public WebSecUser() {
-    }
-
-    public WebSecUser(Long webSecUserId, String webSecUserName, String webSecUserPassword, List<WebSecUserRole> userRoles) {
-        this.webSecUserId = webSecUserId;
-        this.webSecUserName = webSecUserName;
-        this.webSecUserPassword = webSecUserPassword;
-        this.userRoles = userRoles;
     }
 
     public Long getWebSecUserId() {
@@ -64,21 +59,11 @@ public class WebSecUser{
         this.webSecUserPassword = webSecUserPassword;
     }
 
-    public List<WebSecUserRole> getUserRoles() {
-        return userRoles;
+    public UserRole getWebSecUserRole() {
+        return webSecUserRole;
     }
 
-    public void setUserRoles(List<WebSecUserRole> userRoles) {
-        this.userRoles = userRoles;
-    }
-
-    @Override
-    public String toString() {
-        return "WebSecUser{" +
-                "webSecUserId=" + webSecUserId +
-                ", webSecUserName='" + webSecUserName + '\'' +
-                ", webSecUserPassword='" + webSecUserPassword + '\'' +
-                ", userRoles=" + userRoles +
-                '}';
+    public void setWebSecUserRole(UserRole webSecUserRole) {
+        this.webSecUserRole = webSecUserRole;
     }
 }

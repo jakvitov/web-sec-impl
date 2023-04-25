@@ -3,6 +3,7 @@ package cz.jakvitov.websecimpl.persistence;
 import cz.jakvitov.websecimpl.persistence.entity.WebSecUser;
 import cz.jakvitov.websecimpl.persistence.repository.WebSecUserRepository;
 import cz.jakvitov.websecimpl.persistence.service.WebSecUserService;
+import cz.jakvitov.websecimpl.security.UserRole;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,6 +23,7 @@ public class UserTest {
         WebSecUser webSecUser = new WebSecUser();
         webSecUser.setWebSecUserName("testUser1");
         webSecUser.setWebSecUserPassword("password");
+        webSecUser.setWebSecUserRole(UserRole.ADMIN);
         webSecUserService.saveWebSecUser(webSecUser);
     }
 
