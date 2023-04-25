@@ -18,25 +18,21 @@ public class UserTest {
     private WebSecUserService webSecUserService;
 
     @Test
-
     void persistNewUserTestInRepository(){
         WebSecUser webSecUser = new WebSecUser();
-        webSecUser.setName("testUser1");
-        webSecUser.setPassword("password");
-
-        webSecUserRepository.saveAndFlush(webSecUser);
-        webSecUser.setName("testUser2");
+        webSecUser.setWebSecUserName("testUser1");
+        webSecUser.setWebSecUserPassword("password");
         webSecUserService.saveWebSecUser(webSecUser);
     }
 
     @Test
     void findPersistedUsers(){
-        WebSecUser webSecUser1 = webSecUserService.getUserByName("testUser2");
+        WebSecUser webSecUser1 = webSecUserService.getUserByName("testUser1");
     }
 
     @Test
     void deletePersistedUsers(){
-        webSecUserService.deleteUserByName("testUser2");
+        webSecUserService.deleteUserByName("testUser1");
     }
 
 }
