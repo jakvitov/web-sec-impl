@@ -19,8 +19,8 @@ public class SecurityConfiguration {
         httpSecurity.
                 authorizeHttpRequests(request -> request
                         .requestMatchers("/admin/**").hasAuthority("ADMIN")
-                        .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
-                        .requestMatchers("/greet").permitAll()
+                        .requestMatchers("/user/**").hasAnyAuthority("USER", "ADMIN")
+                        .requestMatchers("/*").permitAll()
                 )
                 .formLogin(Customizer.withDefaults());
         return httpSecurity.build();

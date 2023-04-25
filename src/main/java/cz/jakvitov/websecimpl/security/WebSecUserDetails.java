@@ -2,6 +2,7 @@ package cz.jakvitov.websecimpl.security;
 
 import cz.jakvitov.websecimpl.persistence.entity.WebSecUser;
 import cz.jakvitov.websecimpl.security.roles.UserAdminAuthority;
+import cz.jakvitov.websecimpl.security.roles.UserRoleAuthority;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -25,7 +26,7 @@ public class WebSecUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.asList(new UserAdminAuthority(), new UserAdminAuthority());
+        return Arrays.asList(new UserAdminAuthority(), new UserRoleAuthority());
     }
 
     @Override
